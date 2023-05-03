@@ -1,3 +1,5 @@
+-- Craftitems
+
 minetest.register_craftitem("new_picks:stone_stick",{
          description = "Stone Stick",
          inventory_image = "sstick.png",
@@ -7,6 +9,13 @@ minetest.register_craftitem("new_picks:irostone",{
           description = "irostone ingot",
           inventory_image = "is.png",
 })
+
+minetest.register_craftitem("new_picks:mesostone",{
+          description = "Stone infused mese",
+          inventory_image = "mesostone.png",
+})
+
+--Pickaxes
 
 minetest.register_tool("new_picks:stone_ps", {
 	description = "Stone Pickaxe With A Stone Stick",
@@ -38,6 +47,23 @@ minetest.register_tool("new_picks:irostone_ps", {
               groups = {pickaxe = 1}
 })
 
+minetest.register_tool("new_picks:mesostone_ps", {
+              description = "Mese infused stone pickaxe",
+              inventory_image = "mesostoneps.png",
+              tool_capabilities = {
+                         full_punch_interval = 1.0,
+                         max_drop_level = 1,
+                         groupcaps={
+                                          cracky = {times={[1]=1.9, [2]=0.6, [3]=0.3}, uses=200, maxlevel=4},
+                         },
+                         damage_groups = {fleshy=4},
+              },
+              sound = {breaks = "default_tool_breaks"},
+              groups = {pickaxe = 1}
+})
+
+--Shovels
+
 minetest.register_tool("new_picks:stone_ss",{
                description = "Stone shovel with a stone stick",
                inventory_image = "stones.png",
@@ -53,6 +79,23 @@ minetest.register_tool("new_picks:stone_ss",{
               groups = {shovel=1}
 })
 
+minetest.register_tool("new_picks:irostone_ss",{
+               description = "Irostone shovel",
+               inventory_image = "irostones.png",
+               tool_capabilities = {
+                           full_punch_interval = 1.9,
+                           max_drop_level =1,
+                           groupcaps={
+                                           crumbly = {times={[1]=4.90, [2]=1.50, [3]=0.16}, uses=120, maxlevel=3},
+                           },
+                           damage_groups = {fleshy=4},
+              },
+              sound = {breaks = "default_tool_breaks"},
+              groups = {shovel=1}
+})
+
+--Axe
+
 minetest.register_tool("new_picks:stone_as",{
                description = "Stone axe with a stone stick",
                inventory_image = "stonea.png",
@@ -67,6 +110,8 @@ minetest.register_tool("new_picks:stone_as",{
                sound = {breaks = "default_tool_breaks"},
                groups = {axe=1},
 })
+
+--CRAFTING RECIPIES
 
 minetest.register_craft({
          output = "new_picks:stone_stick",
@@ -96,6 +141,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+     output = "new_picks:irostone_ss",
+     recipe = {
+                    {"","new_picks:irostone",""},
+                    {"", "new_picks:stone_stick", ""},
+                    {"", "new_picks:stone_stick", ""},
+                  }
+})
+
+minetest.register_craft({
      output = "new_picks:stone_as",
      recipe = {
                     {"default:cobble","default:cobble",""},
@@ -116,6 +170,22 @@ minetest.register_craft({
            output = "new_picks:irostone_ps",
            recipe = {
                        {"new_picks:irostone", "new_picks:irostone", "new_picks:irostone"},
+                       {"", "new_picks:stone_stick", ""},
+                       {"", "new_picks:stone_stick", ""},
+                      },
+})
+
+minetest.register_craft({
+            output = "new_picks:mesostone 6",
+             recipe = {
+                         {"default:mese_crystal", "default:cobble", ""},
+                        },
+})
+
+minetest.register_craft({
+           output = "new_picks:mesostone_ps",
+           recipe = {
+                       {"new_picks:mesostone", "new_picks:mesostone", "new_picks:mesostone"},
                        {"", "new_picks:stone_stick", ""},
                        {"", "new_picks:stone_stick", ""},
                       },
